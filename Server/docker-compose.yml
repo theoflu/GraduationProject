@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  rtmp:
+    build: ./rtmp
+    ports:
+      - "1935:1935"
+      - "8083:8082"
+    container_name: rtmp_server
+    volumes:
+      - ./data:/tmp/hls
+      - ./data:/var/log/nginx
+  auth:
+    build: ./auth
+    container_name: auth_server

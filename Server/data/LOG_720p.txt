@@ -1,0 +1,12 @@
+'/usr/local/bin/ffmpeg' '-threads' '3' '-f' 'flv' '-i' 'rtmp://localhost:1935/live/_sourcep?key=supersecret' '-c:v' 'libx264' '-crf' '22' '-c:a' 'aac' '-ar' '44100' '-filter_complex' '[0:v]scale=w=1280:h=720[v2];[0:a]aformat=sample_rates=44100[a2]' '-map' '[v2]' '-map' '[a2]' '-b:v' '800k' '-maxrate' '1000k' '-bufsize' '1200k' '-f' 'hls' '-hls_time' '3' '-hls_flags' 'independent_segments' '-hls_list_size' '10' '-master_pl_name' '/tmp/hls/_720p.m3u8' '-y' '/tmp/hls/_720p/_720p.m3u8' 
+ffmpeg version 6.1.1 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 10 (Debian 10.2.1-6)
+  configuration: --enable-libx264 --enable-libx265 --enable-gpl
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
